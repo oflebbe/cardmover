@@ -7,25 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EDDD26E621DE1C8000EE1B88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDD26E521DE1C8000EE1B88 /* AppDelegate.swift */; };
-		EDDD26E821DE1C8000EE1B88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDD26E721DE1C8000EE1B88 /* ViewController.swift */; };
-		EDDD26EB21DE1C8000EE1B88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDDD26E921DE1C8000EE1B88 /* Main.storyboard */; };
-		EDDD26ED21DE1C8100EE1B88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDDD26EC21DE1C8100EE1B88 /* Assets.xcassets */; };
-		EDDD26F021DE1C8100EE1B88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDDD26EE21DE1C8100EE1B88 /* LaunchScreen.storyboard */; };
+		ED46DC0B21E8F36600C72B4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDD26E721DE1C8000EE1B88 /* ViewController.swift */; };
+		ED46DC0C21E8F36600C72B4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDD26E521DE1C8000EE1B88 /* AppDelegate.swift */; };
+		ED46DC0D21E8F36600C72B4B /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDD26F921DE231400EE1B88 /* TableDataSource.swift */; };
+		ED46DC1021E8F36600C72B4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDDD26EE21DE1C8100EE1B88 /* LaunchScreen.storyboard */; };
+		ED46DC1121E8F36600C72B4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDDD26EC21DE1C8100EE1B88 /* Assets.xcassets */; };
+		ED46DC1221E8F36600C72B4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDDD26E921DE1C8000EE1B88 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EDDD26E221DE1C8000EE1B88 /* explore3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = explore3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED46DC1621E8F36600C72B4B /* cardmover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cardmover.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED46DC1721E8F36600C72B4B /* explore3 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "explore3 copy-Info.plist"; path = "/Users/olaf/Devel/manypart/cardmover/explore3 copy-Info.plist"; sourceTree = "<absolute>"; };
 		EDDD26E521DE1C8000EE1B88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDDD26E721DE1C8000EE1B88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EDDD26EA21DE1C8000EE1B88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EDDD26EC21DE1C8100EE1B88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDDD26EF21DE1C8100EE1B88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDDD26F121DE1C8100EE1B88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDDD26F921DE231400EE1B88 /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EDDD26DF21DE1C8000EE1B88 /* Frameworks */ = {
+		ED46DC0E21E8F36600C72B4B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,50 +41,52 @@
 		EDDD26D921DE1C8000EE1B88 = {
 			isa = PBXGroup;
 			children = (
-				EDDD26E421DE1C8000EE1B88 /* explore3 */,
+				EDDD26E421DE1C8000EE1B88 /* cardmover */,
 				EDDD26E321DE1C8000EE1B88 /* Products */,
+				ED46DC1721E8F36600C72B4B /* explore3 copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		EDDD26E321DE1C8000EE1B88 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EDDD26E221DE1C8000EE1B88 /* explore3.app */,
+				ED46DC1621E8F36600C72B4B /* cardmover.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EDDD26E421DE1C8000EE1B88 /* explore3 */ = {
+		EDDD26E421DE1C8000EE1B88 /* cardmover */ = {
 			isa = PBXGroup;
 			children = (
 				EDDD26E521DE1C8000EE1B88 /* AppDelegate.swift */,
+				EDDD26F921DE231400EE1B88 /* TableDataSource.swift */,
 				EDDD26E721DE1C8000EE1B88 /* ViewController.swift */,
 				EDDD26E921DE1C8000EE1B88 /* Main.storyboard */,
 				EDDD26EC21DE1C8100EE1B88 /* Assets.xcassets */,
 				EDDD26EE21DE1C8100EE1B88 /* LaunchScreen.storyboard */,
 				EDDD26F121DE1C8100EE1B88 /* Info.plist */,
 			);
-			path = explore3;
+			path = cardmover;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EDDD26E121DE1C8000EE1B88 /* explore3 */ = {
+		ED46DC0921E8F36600C72B4B /* cardmover */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EDDD26F421DE1C8100EE1B88 /* Build configuration list for PBXNativeTarget "explore3" */;
+			buildConfigurationList = ED46DC1321E8F36600C72B4B /* Build configuration list for PBXNativeTarget "cardmover" */;
 			buildPhases = (
-				EDDD26DE21DE1C8000EE1B88 /* Sources */,
-				EDDD26DF21DE1C8000EE1B88 /* Frameworks */,
-				EDDD26E021DE1C8000EE1B88 /* Resources */,
+				ED46DC0A21E8F36600C72B4B /* Sources */,
+				ED46DC0E21E8F36600C72B4B /* Frameworks */,
+				ED46DC0F21E8F36600C72B4B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = explore3;
+			name = cardmover;
 			productName = explore3;
-			productReference = EDDD26E221DE1C8000EE1B88 /* explore3.app */;
+			productReference = ED46DC1621E8F36600C72B4B /* cardmover.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -93,13 +98,8 @@
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Olaf Flebbe";
-				TargetAttributes = {
-					EDDD26E121DE1C8000EE1B88 = {
-						CreatedOnToolsVersion = 10.1;
-					};
-				};
 			};
-			buildConfigurationList = EDDD26DD21DE1C8000EE1B88 /* Build configuration list for PBXProject "explore3" */;
+			buildConfigurationList = EDDD26DD21DE1C8000EE1B88 /* Build configuration list for PBXProject "cardmover" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,31 +112,32 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EDDD26E121DE1C8000EE1B88 /* explore3 */,
+				ED46DC0921E8F36600C72B4B /* cardmover */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		EDDD26E021DE1C8000EE1B88 /* Resources */ = {
+		ED46DC0F21E8F36600C72B4B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDDD26F021DE1C8100EE1B88 /* LaunchScreen.storyboard in Resources */,
-				EDDD26ED21DE1C8100EE1B88 /* Assets.xcassets in Resources */,
-				EDDD26EB21DE1C8000EE1B88 /* Main.storyboard in Resources */,
+				ED46DC1021E8F36600C72B4B /* LaunchScreen.storyboard in Resources */,
+				ED46DC1121E8F36600C72B4B /* Assets.xcassets in Resources */,
+				ED46DC1221E8F36600C72B4B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EDDD26DE21DE1C8000EE1B88 /* Sources */ = {
+		ED46DC0A21E8F36600C72B4B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDDD26E821DE1C8000EE1B88 /* ViewController.swift in Sources */,
-				EDDD26E621DE1C8000EE1B88 /* AppDelegate.swift in Sources */,
+				ED46DC0B21E8F36600C72B4B /* ViewController.swift in Sources */,
+				ED46DC0C21E8F36600C72B4B /* AppDelegate.swift in Sources */,
+				ED46DC0D21E8F36600C72B4B /* TableDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +163,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		ED46DC1421E8F36600C72B4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RAYNCVBR5;
+				INFOPLIST_FILE = cardmover/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.oflebbe.cardmover;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED46DC1521E8F36600C72B4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RAYNCVBR5;
+				INFOPLIST_FILE = cardmover/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.oflebbe.cardmover;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		EDDD26F221DE1C8100EE1B88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -278,59 +319,23 @@
 			};
 			name = Release;
 		};
-		EDDD26F521DE1C8100EE1B88 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2RAYNCVBR5;
-				INFOPLIST_FILE = explore3/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.oflebbe.explore3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		EDDD26F621DE1C8100EE1B88 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2RAYNCVBR5;
-				INFOPLIST_FILE = explore3/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.oflebbe.explore3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EDDD26DD21DE1C8000EE1B88 /* Build configuration list for PBXProject "explore3" */ = {
+		ED46DC1321E8F36600C72B4B /* Build configuration list for PBXNativeTarget "cardmover" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EDDD26F221DE1C8100EE1B88 /* Debug */,
-				EDDD26F321DE1C8100EE1B88 /* Release */,
+				ED46DC1421E8F36600C72B4B /* Debug */,
+				ED46DC1521E8F36600C72B4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EDDD26F421DE1C8100EE1B88 /* Build configuration list for PBXNativeTarget "explore3" */ = {
+		EDDD26DD21DE1C8000EE1B88 /* Build configuration list for PBXProject "cardmover" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EDDD26F521DE1C8100EE1B88 /* Debug */,
-				EDDD26F621DE1C8100EE1B88 /* Release */,
+				EDDD26F221DE1C8100EE1B88 /* Debug */,
+				EDDD26F321DE1C8100EE1B88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
