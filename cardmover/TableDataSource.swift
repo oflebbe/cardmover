@@ -43,6 +43,8 @@ class TableDataSource : NSObject, UITableViewDataSource, UITableViewDelegate {
                     groupsinContainers[ i.identifier]!.append(GroupSelect(group))
                 }
             }
+            
+            
         } catch {
             
         }
@@ -75,15 +77,17 @@ class TableDataSource : NSObject, UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let name = contactContainers[section].name
+        let defaultString = contactContainers[section].identifier == contactStore.defaultContainerIdentifier() ? " (default)" : ""
+        
         switch contactContainers[section].type {
         case CNContainerType.local:
-            return "Local: " + name
+            return "Local: " + name + defaultString
         case CNContainerType.cardDAV:
-            return "CardDAV: " + name
+            return "CardDAV: " + name + defaultString
         case CNContainerType.exchange:
-            return "Exchange: " + name
+            return "Exchange: " + name + defaultString
         default:
-            return "Unknown: " + name
+            return "Unknown: " + name + defaultString
         }
     }
     
@@ -127,7 +131,7 @@ class TableDataSource : NSObject, UITableViewDataSource, UITableViewDelegate {
         if (defaultContainer == nil) {
             return
         }
-        var groupsToSelect : [String] = []
+        var contacts : [ CNContact] = []
         for container in contactContainers {
             if (container == defaultContainer) {
                 continue;
@@ -135,24 +139,19 @@ class TableDataSource : NSObject, UITableViewDataSource, UITableViewDelegate {
             
             for groupSelect in groupsinContainers[ container.identifier]! {
                 if groupSelect.selected {
-                    groupsToSelect.append( groupSelect.identifier)
+                    do {
+                        let contactsNew = try contactStore.unifiedContacts(matching: CNContact.predicateForContactsInGroup(withIdentifier: groupSelect.identifier), keysToFetch: [CNContactIdentifierKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor])
+                        contacts.append(contentsOf: contactsNew)
+                    } catch {
+                        
+                    }
                 }
             }
         }
-        if groupsToSelect.count == 0 {
-            print("nothing to display\n")
-        } else {
-            // get contacts in selected group
-            var contacts : [ CNContact] = []
-            do {
-                contacts = try contactStore.unifiedContacts(matching: CNGroup.predicateForGroups(withIdentifiers: groupsToSelect), keysToFetch: [])
-            } catch {
-                
-            }
-            for c in contacts {
-                print( c.givenName)
-            }
+        for c in contacts {
+            c.
         }
+        
     }
 }
 
