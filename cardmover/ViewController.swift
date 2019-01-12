@@ -50,6 +50,8 @@ class ViewController: UITableViewController {
         }
     }
     
-
+    @IBAction func doAddressMove(_ sender: Any) {
+        self.tbvds?.addressMove(self.tbv)
+    }
 }
 
