@@ -51,7 +51,12 @@ class ViewController: UITableViewController {
     }
     
     @IBAction func doAddressMove(_ sender: Any) {
-        self.tbvds?.addressMove(self.tbv)
+        let count = self.tbvds?.addressMove(self.tbv)
+        
+        let alert = UIAlertController.init(title: "Please choose a source type", message: nil, preferredStyle: .actionSheet)
+        //actionSheet.addAction( UIAlertAction( title))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

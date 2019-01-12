@@ -120,7 +120,67 @@ class TableDataSource : NSObject, UITableViewDataSource, UITableViewDelegate {
         changeCheck( tableView, didSelectRowAt: indexPath, to: false)
     }
     
-    public func addressMove( _ tableView: UITableView) {
+    private func findGroupInDefaultContainer( _ name: String) -> CNGroup? {
+        var newGroup : CNGroup? = nil
+        for g in try! contactStore.groups(matching: CNGroup.predicateForGroupsInContainer(withIdentifier: contactStore.defaultContainerIdentifier())) {
+            if g.name == name {
+                newGroup = g
+                break
+            }
+        }
+        return newGroup
+    }
+    
+    public func createOrReturnGroupInDefaultContainer( _ name: String) -> CNGroup {
+        if let ret = findGroupInDefaultContainer( name) {
+            return ret
+        } else {
+            let saveRequest = CNSaveRequest()
+            let newGroup = CNMutableGroup()
+            newGroup.name = name
+            saveRequest.add( newGroup, toContainerWithIdentifier: contactStore.defaultContainerIdentifier())
+            try! contactStore.execute(saveRequest)
+            if let ret = findGroupInDefaultContainer( name) {
+                return ret
+            } else {
+                abort()
+            }
+        }
+    }
+    
+    
+    let allkeys = [
+        CNContactNamePrefixKey,
+        CNContactGivenNameKey,
+        CNContactMiddleNameKey,
+        CNContactFamilyNameKey,
+        CNContactPreviousFamilyNameKey,
+        CNContactNameSuffixKey,
+        CNContactNicknameKey,
+        CNContactOrganizationNameKey,
+        CNContactDepartmentNameKey,
+        CNContactJobTitleKey,
+        CNContactPhoneticGivenNameKey,
+        CNContactPhoneticMiddleNameKey,
+        CNContactPhoneticFamilyNameKey,
+        CNContactPhoneticOrganizationNameKey,
+        CNContactBirthdayKey,
+        CNContactNonGregorianBirthdayKey,
+        CNContactNoteKey,
+        CNContactImageDataKey,
+        CNContactThumbnailImageDataKey,
+        CNContactImageDataAvailableKey,
+        CNContactTypeKey,
+        CNContactPhoneNumbersKey,
+        CNContactEmailAddressesKey,
+        CNContactPostalAddressesKey,
+        CNContactDatesKey,
+        CNContactUrlAddressesKey,
+        CNContactRelationsKey,
+        CNContactSocialProfilesKey,
+        CNContactInstantMessageAddressesKey]
+    
+    public func addressMove( _ tableView: UITableView) -> Int {
         // find defaultContainer
         var defaultContainer : CNContainer? = nil;
         for container in contactContainers {
@@ -129,9 +189,27 @@ class TableDataSource : NSObject, UITableViewDataSource, UITableViewDelegate {
             }
         }
         if (defaultContainer == nil) {
-            return
+            return 0
         }
-        var contacts : [ CNContact] = []
+        
+        let request = CNContactFetchRequest(keysToFetch: allkeys as [CNKeyDescriptor])
+        request.unifyResults = false
+        request.mutableObjects = false
+        request.predicate = CNContact.predicateForContactsInContainer(withIdentifier: contactStore.defaultContainerIdentifier())
+        var defaultContacts = [CNContact]()
+        
+        do {
+            try contactStore.enumerateContacts(with:request){
+                (contact, cursor) -> Void in
+                defaultContacts.append(contact)
+            }
+        } catch let error {
+            NSLog("Fetch contact error: \(error)")
+        }
+        
+        
+        var moveContacts = [ CNContact]()
+        var notAlreadyThereContacts = [ CNContact]()
         for container in contactContainers {
             if (container == defaultContainer) {
                 continue;
@@ -140,18 +218,72 @@ class TableDataSource : NSObject, UITableViewDataSource, UITableViewDelegate {
             for groupSelect in groupsinContainers[ container.identifier]! {
                 if groupSelect.selected {
                     do {
-                        let contactsNew = try contactStore.unifiedContacts(matching: CNContact.predicateForContactsInGroup(withIdentifier: groupSelect.identifier), keysToFetch: [CNContactIdentifierKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor])
-                        contacts.append(contentsOf: contactsNew)
-                    } catch {
+                        let request = CNContactFetchRequest(keysToFetch: allkeys as [CNKeyDescriptor])
+                        request.unifyResults = false
+                        request.mutableObjects = false
+                        request.predicate = CNContact.predicateForContactsInGroup(withIdentifier: groupSelect.identifier)
                         
+                        do {
+                            try contactStore.enumerateContacts(with:request){
+                                (contact, cursor) -> Void in
+                                moveContacts.append(contact)
+                            }
+                        } catch let error {
+                            NSLog("Fetch contact error: \(error)")
+                        }
+                        
+                        for c1 in moveContacts {
+                            var found = false
+                            for c2 in defaultContacts {
+                               if c1.givenName == c2.givenName && c1.familyName == c2.familyName{
+                                    found = true
+                                    break
+                                }
+                            }
+                            if !found {
+                                notAlreadyThereContacts.append( c1)
+                            }
+                        }
                     }
                 }
             }
+            
+            
         }
-        for c in contacts {
-            c.
+    
+        let newGroup = createOrReturnGroupInDefaultContainer("New Group")
+        let saveRequest = CNSaveRequest()
+        var count = 0
+        for c in notAlreadyThereContacts {
+            let new = CNMutableContact()
+            new.birthday = c.birthday
+            new.contactType = c.contactType
+            new.dates = c.dates
+            new.familyName = c.familyName
+            new.givenName = c.givenName
+            new.departmentName = c.departmentName
+            new.emailAddresses = c.emailAddresses
+            new.jobTitle = c.jobTitle
+            new.middleName = c.middleName
+            new.namePrefix = c.namePrefix
+            new.nameSuffix = c.nameSuffix
+            new.nickname = c.nickname
+            new.nonGregorianBirthday = c.nonGregorianBirthday
+            new.note = c.note
+            new.organizationName = c.organizationName
+            new.phoneNumbers = c.phoneNumbers
+            new.postalAddresses = c.postalAddresses
+            new.previousFamilyName = c.previousFamilyName
+            new.urlAddresses = c.urlAddresses
+            
+            saveRequest.add( new, toContainerWithIdentifier: nil)
+            saveRequest.addMember( new, to: newGroup)
+            count = count + 1
+            
         }
+        try! contactStore.execute(saveRequest)
         
+        return count
     }
 }
 
